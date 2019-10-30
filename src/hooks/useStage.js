@@ -18,10 +18,14 @@ export const useStage = (player, resetPlayer) => {
                         newStage[y + player.pos.y][x + player.pos.x] = [
                             value,
                             `${player.collided ? 'merged' : 'clear'}`,
-                        ]
+                        ];
                     }
                 });
             });
+            // check if we collided
+            if (player.collided) {
+                resetPlayer();
+            }
 
             return newStage;
         };
